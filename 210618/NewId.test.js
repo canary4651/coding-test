@@ -6,36 +6,36 @@ function removeSpecialLetter(newId) {
   return chagneToLowerCase(newId).replace(specialCharacter, '');
 }
 
-function RemoveRepeat(newId) {
+function removeRepeat(newId) {
   const repeatFullStop = /\.{2,}/g;
   return removeSpecialLetter(newId).replace(repeatFullStop, '.');
 }
 
-function RemoveFrontAndBackPeroid(newId) {
-  return RemoveRepeat(newId).replace(/^\.|\.$/, '');
+function removeFrontAndBackPeroid(newId) {
+  return removeRepeat(newId).replace(/^\.|\.$/, '');
 }
 
-function AddALetter(newId) {
-  if (RemoveFrontAndBackPeroid(newId).length === 0) {
-    return `${RemoveFrontAndBackPeroid(newId)}a`;
+function addALetter(newId) {
+  if (removeFrontAndBackPeroid(newId).length === 0) {
+    return `${removeFrontAndBackPeroid(newId)}a`;
   }
-  return RemoveFrontAndBackPeroid(newId);
+  return removeFrontAndBackPeroid(newId);
 }
 
-function LimitLength(newId) {
-  return AddALetter(newId).slice(0, 15).replace(/\.$/, '');
+function limitLength(newId) {
+  return addALetter(newId).slice(0, 15).replace(/\.$/, '');
 }
 
-function AddLastLetter(newId) {
-  const lastLetter = LimitLength(newId);
+function addLastLetter(newId) {
+  const lastLetter = limitLength(newId);
   if (lastLetter.length <= 2) {
     return lastLetter.padEnd(3, lastLetter[lastLetter.length - 1]);
   }
-  return LimitLength(newId);
+  return limitLength(newId);
 }
 
 function solution1(newId) {
-  return AddLastLetter(newId);
+  return addLastLetter(newId);
 }
 
 function solution2(newId) {
@@ -66,36 +66,36 @@ test('remove special letter', () => {
 test('remove consecutive periods', () => {
   const newId = '...!@BaT#*..y.abcdefghijklm';
 
-  expect(RemoveRepeat(newId)).toBe('.bat.y.abcdefghijklm');
+  expect(removeRepeat(newId)).toBe('.bat.y.abcdefghijklm');
 });
 
 test('remove front and back periods', () => {
   const newId = '...!@BaT#*..y.abcdefghijklm';
 
-  expect(RemoveFrontAndBackPeroid(newId)).toBe('bat.y.abcdefghijklm');
+  expect(removeFrontAndBackPeroid(newId)).toBe('bat.y.abcdefghijklm');
 });
 
 test('if empty string add "a"', () => {
   const newId = '';
   const newId2 = 'bat.y.abcdefghijklm';
 
-  expect(AddALetter(newId)).toBe('a');
+  expect(addALetter(newId)).toBe('a');
 
-  expect(AddALetter(newId2)).toBe('bat.y.abcdefghijklm');
+  expect(addALetter(newId2)).toBe('bat.y.abcdefghijklm');
 });
 
 test('lemit length to 2 from 15', () => {
   const newId = '...!@BaT#*..y.abcdefghijklm';
 
-  expect(LimitLength(newId)).toBe('bat.y.abcdefghi');
+  expect(limitLength(newId)).toBe('bat.y.abcdefghi');
 });
 
 test("if letter's length is 2, add last latter", () => {
   const newId1 = 'ab';
   const newId2 = 'bat.y.abcdefghijklm';
 
-  expect(AddLastLetter(newId1)).toBe('abb');
-  expect(LimitLength(newId2)).toBe('bat.y.abcdefghi');
+  expect(addLastLetter(newId1)).toBe('abb');
+  expect(limitLength(newId2)).toBe('bat.y.abcdefghi');
 });
 
 test('solution', () => {
