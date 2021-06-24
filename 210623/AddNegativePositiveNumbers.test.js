@@ -20,8 +20,12 @@ function solution4(absolutes, signs) {
   return absolutes.reduce((acc, cur, i) => acc + (signs[i] ? cur : -cur), 0);
 }
 
+function solution5(absolutes, signs) {
+  return absolutes.reduce((acc, cur, i) => (signs[i] ? acc + cur : acc - cur), 0);
+}
+
 test('solution', () => {
-  [solution1, solution2, solution3, solution4].forEach((solution) => {
+  [solution1, solution2, solution3, solution4, solution5].forEach((solution) => {
     expect(solution([4, 7, 12], [true, false, true])).toBe(9);
   });
 });
