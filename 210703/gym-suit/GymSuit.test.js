@@ -6,24 +6,24 @@ function isEqual(n, lost, reserve) {
 }
 
 function solution1(n, lost, reserve) {
-  return n - lost.filter(a => {
-    const fortAndBack = reserve.find(r => Math.abs(r - a) <= 1);
+  return n - lost.filter((a) => {
+    const fortAndBack = reserve.find((r) => Math.abs(r - a) <= 1);
 
     if (!fortAndBack) {
       return true;
     }
 
-    reserve = reserve.filter(r => r !== fortAndBack);
+    reserve = reserve.filter((r) => r !== fortAndBack);
   }).length;
 }
 
 function solution2(n, lost, reserve) {
   const students = new Array(n).fill(1);
-  reserve.forEach(i => {
+  reserve.forEach((i) => {
     students[i - 1] += 1;
   });
 
-  lost.forEach(i => {
+  lost.forEach((i) => {
     students[i - 1] -= 1;
   });
 
@@ -39,10 +39,10 @@ function solution2(n, lost, reserve) {
     }
   });
 
-  const answer = students.filter(i => i).length;
+  const answer = students.filter((i) => i).length;
 
   return answer;
-};
+}
 
 function solution3(n, lost, reserve) {
   const noGymSuit = lost.reduce((acc, cur) => {
@@ -55,7 +55,20 @@ function solution3(n, lost, reserve) {
   }, []);
 
   return n - noGymSuit.length;
-};
+}
+
+function solution4(n, lost, reserve) {
+  const realLost = lost.filter((x) => !reserve.includes(x));
+  let realReserve = reserve.filter((x) => !lost.includes(x));
+
+  return n - realLost.filter((lostStudent) => {
+    const extra = realReserve.find((a) => Math.abs(a - lostStudent) <= 1);
+
+    if (!extra) return true;
+
+    realReserve = realReserve.filter((a) => a !== extra);
+  }).length;
+}
 
 test('isEqual', () => {
   expect(isEqual(5, [2, 4], [3]))
@@ -65,7 +78,7 @@ test('isEqual', () => {
 });
 
 test('solution', () => {
-  [solution1, solution2, solution3].forEach((solution) => {
+  [solution1, solution2, solution3, solution4].forEach((solution) => {
     expect(solution(5, [2, 4], [1, 3, 5]))
       .toBe(5);
     expect(solution(5, [2, 4], [3]))
