@@ -1,5 +1,3 @@
-const { useState } = require('react');
-
 function isPrime(numbers) {
   if (numbers === 2) {
     return true;
