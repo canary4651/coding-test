@@ -1,5 +1,5 @@
 문제
-- [문자열 압축](https://programmers.co.kr/learn/courses/30/lessons/60057)
+- [튜플](https://programmers.co.kr/learn/courses/30/lessons/64065)
 
 ## 1. 원하는 것
 반복되는 가장 긴 길이를 가진 문자의 개수
