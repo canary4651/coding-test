@@ -104,40 +104,21 @@ function solution3(record) {
 }
 
 test('split recode', () => {
-  expect(splitOf(['Enter uid1234 Muzi'])).toEqual([['Enter', 'uid1234', 'Muzi']]);
+  expect(splitOf(['Enter uid1234 Muzi']))
+    .toEqual([['Enter', 'uid1234', 'Muzi']]);
   expect(splitOf(['Enter uid1234 Muzi', 'Enter uid4567 Prodo']))
     .toEqual([['Enter', 'uid1234', 'Muzi'], ['Enter', 'uid4567', 'Prodo']]);
 });
 
-test('solution1', () => {
-  expect(solution1(
-    ['Enter uid1234 Muzi', 'Enter uid4567 Prodo',
-      'Leave uid1234', 'Enter uid1234 Prodo', 'Change uid4567 Ryan'],
-  ))
-    .toEqual(
-      ['Prodo님이 들어왔습니다.', 'Ryan님이 들어왔습니다.',
-        'Prodo님이 나갔습니다.', 'Prodo님이 들어왔습니다.'],
-    );
-});
-
-test('solution2', () => {
-  expect(solution2(
-    ['Enter uid1234 Muzi', 'Enter uid4567 Prodo',
-      'Leave uid1234', 'Enter uid1234 Prodo', 'Change uid4567 Ryan'],
-  ))
-    .toEqual(
-      ['Prodo님이 들어왔습니다.', 'Ryan님이 들어왔습니다.',
-        'Prodo님이 나갔습니다.', 'Prodo님이 들어왔습니다.'],
-    );
-});
-
-test('solution3', () => {
-  expect(solution3(
-    ['Enter uid1234 Muzi', 'Enter uid4567 Prodo',
-      'Leave uid1234', 'Enter uid1234 Prodo', 'Change uid4567 Ryan'],
-  ))
-    .toEqual(
-      ['Prodo님이 들어왔습니다.', 'Ryan님이 들어왔습니다.',
-        'Prodo님이 나갔습니다.', 'Prodo님이 들어왔습니다.'],
-    );
+test('solution', () => {
+  [solution1, solution2, solution3].forEach((solution) => {
+    expect(solution(
+      ['Enter uid1234 Muzi', 'Enter uid4567 Prodo',
+        'Leave uid1234', 'Enter uid1234 Prodo', 'Change uid4567 Ryan'],
+    ))
+      .toEqual(
+        ['Prodo님이 들어왔습니다.', 'Ryan님이 들어왔습니다.',
+          'Prodo님이 나갔습니다.', 'Prodo님이 들어왔습니다.'],
+      );
+  });
 });
