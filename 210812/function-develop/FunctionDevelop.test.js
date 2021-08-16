@@ -81,6 +81,6 @@ test('rest of day', () => {
 test('solution', () => {
   [solution1, solution2].forEach((solution) => {
     expect(solution([93, 30, 55], [1, 30, 5])).toEqual([2, 1]);
-    expect(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1])).toEqual([1, 3, 2]);  
-  })
+    expect(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1])).toEqual([1, 3, 2]);
+  });
 });
