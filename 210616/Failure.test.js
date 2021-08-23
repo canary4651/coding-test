@@ -1,5 +1,5 @@
 function fail(N, stages) {
-  return [...new Array(N)].map((v, i) => {
+  return [...new Array(N)].map((_, i) => {
     const totalPlayer = stages.length;
     stages = stages.filter((v) => v > i + 1);
     return { i: i + 1, f: (totalPlayer - stages.length) / totalPlayer };
