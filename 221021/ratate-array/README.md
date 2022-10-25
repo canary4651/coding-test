@@ -1,5 +1,5 @@
 문제
-- [주사위의 개수](https://school.programmers.co.kr/learn/courses/30/lessons/120845)
+[배열 회전시키기](https://school.programmers.co.kr/learn/courses/30/lessons/120844)
 
 ## 1. 원하는 것
 
@@ -8,4 +8,3 @@
 ## 3. 조건
 
 ## 4. 계획
-- (가로 * 세로 * 높이) / (가로 * 세로 * 높이)
